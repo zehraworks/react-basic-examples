@@ -1,0 +1,11 @@
+.form {
+    background-color: aquamarine;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px rgb(0, 0, 0, 0.1);
+    
+}
