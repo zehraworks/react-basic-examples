@@ -31,14 +31,7 @@ function App() {
       image: "https://picsum.photos/id/1005/5760/3840",
       info: "bla bla bla",
       number: 1,
-    },
-    {
-      id: 5,
-      title: "Product 5",
-      image: "https://picsum.photos/id/1011/5472/3648",
-      info: "bla bla bla",
-      number: 1,
-    },
+    }
   ]);
 
   const [basket, setBasket] = useState([]);
@@ -54,22 +47,20 @@ function App() {
             <Card
               onClick={() => {
                 const arr = [...basket]
-                if(arr.indexOf((ind) => {
+                if (arr.findIndex((ind) => {
                   return item.id===ind.id
-                })===-1) {
+                })=== -1) {
                   arr.push(item)
                   setBasket(arr)
                 } else {
-                  arr.map((element)=> {
-                    if(item.id === element.id) {
-                      return (item.number += 1)
+                  arr.map((e) => {
+                    if (item.id === e.id) {
+                      return (item.number+=1)
                     }
                     setBasket(arr)
                   })
                 }
-                console.log(arr)
-
-                
+                console.log(basket)
               }}
               key={index}
               title={item.title}
@@ -80,6 +71,21 @@ function App() {
         })}
       </div>
       <div className="basket">
+        <h2>Basket</h2>
+        <ul className="basket">
+          {
+            basket.map((i)=> {
+              return <li>
+                {i.title + "----->" + i.number }
+              </li>
+            })
+          }
+        </ul>
+        <ul>
+          {
+            basket.length>0 ? <button onClick={()=>{setBasket([])}}>Delete items</button> : <h3>You have no items in your basket</h3>
+          }
+        </ul>
 
       </div>
     </div>
